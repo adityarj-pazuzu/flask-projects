@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="jumbotron">
+    <h1>Blog Post page using flask</h1>
+    Libraries Used <br>
+    {% for line in lines %}
+    <ul class="list-group">
+        <li>{{ line }}</li>
+    </ul>
+    {% endfor %}
+{% endblock %}

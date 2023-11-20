@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form method="post" action="" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+
+    <div class="form-group">
+        {{ form.email.label }}<br>
+        {{ form.email(class="form_control", placeholder="Enter Email") }}
+        {% if form.email.errors %}
+            {% for error in form.email.errors %}
+                <small class="form-text text-muted ">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.username.label }}<br>
+        {{ form.username(class="form_control", placeholder="Enter Username") }}
+        {% if form.username.errors %}
+            {% for error in form.username.errors %}
+                <small class="form-text text-muted ">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+    <div class="form-group">
+        {{ form.password.label }}<br>
+        {{ form.password(class="form_control", placeholder="Enter Password") }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form.confirm_pass.label }}<br>
+        {{ form.confirm_pass(class="form_control", placeholder="Confirm Password") }}
+        {% if form.confirm_pass.errors %}
+            {% for error in form.confirm_pass.errors %}
+                <small class="form-text">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+  <div class="form-group form-check">
+    {{ form.submit(class="btn btn-primary") }}
+  </div>
+</form>
+
+<div class="invalid-feedback" style="color:red">
+    {% if error_msg %}
+        {{ error_msg }}
+    {% endif %}
+</div>
+
+{% endblock %}

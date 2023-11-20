@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <div align="center">
+        <img class="img-thumbnail rounded-circle"
+             src="{{ url_for('static', filename='profile_pics/'+current_user.profile_image) }}">
+    </div>
+</div>
+
+<div class="container">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{form.username.label(class='form-group')}}
+            {{form.username(class='form-control')}}
+            {% if form.username.errors %}
+            {% for error in form.username.errors %}
+                <small class="form-text text-muted " style="color:red">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{form.email.label(class='form-group')}}
+            {{form.email(class='form-control')}}
+            {% if form.username.errors %}
+            {% for error in form.email.errors %}
+                <small class="form-text text-muted" style="color:red">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{form.picture.label(class='form-group')}}
+            {{form.picture(class='form-control')}}
+            {% if form.username.errors %}
+            {% for error in form.picture.errors %}
+                <small class="form-text text-muted" style="color:red">
+                    {{ error }}
+                </small>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        <div class="form-group">
+          {{form.submit(class='btn btn-primary')}}
+        </div>
+
+    </form>
+</div>
+
+<div class="invalid-feedback" style="color:red">
+    {% if error_msg %}
+        {{ error_msg }}
+    {% endif %}
+</div>
+
+
+{% endblock %}
